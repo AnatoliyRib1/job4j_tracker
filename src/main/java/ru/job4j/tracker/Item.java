@@ -9,10 +9,6 @@ public class Item {
     public Item() {
     }
 
-    public LocalDateTime getCreated() {
-        return created;
-    }
-
     public Item(String name) {
         this.name = name;
     }
@@ -20,6 +16,10 @@ public class Item {
     public Item(String name, int id) {
         this.name = name;
         this.id = id;
+    }
+
+    public LocalDateTime getCreated() {
+        return created;
     }
 
     public int getId() {
