@@ -14,8 +14,6 @@ public class Library {
         for (int i = 0; i < books.length; i++) {
             Book bookName = books[i];
             System.out.println(bookName.getName() + " имеет всего " + bookName.getPages() + " страниц.");
-
-
         }
         System.out.println("\nReplace Clean Code to Knife.\n");
         Book[] change = new Book[1];
