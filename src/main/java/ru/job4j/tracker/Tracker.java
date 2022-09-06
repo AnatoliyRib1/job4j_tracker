@@ -54,9 +54,6 @@ public class Tracker {
             items[index] = item;
         }
         return rsl;
-
-
-
     }
 
     private int indexOf(int id) {
@@ -69,6 +66,4 @@ public class Tracker {
         }
         return rsl;
     }
-
-
 }
