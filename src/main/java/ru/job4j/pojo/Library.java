@@ -15,7 +15,7 @@ public class Library {
             Book bookName = books[i];
             System.out.println(bookName.getName() + " имеет всего " + bookName.getPages() + " страниц.");
         }
-        System.out.println("\nReplace Clean Code to Knife.\n");
+        System.out.println(System.lineSeparator() + "Replace Clean Code to Knife." + System.lineSeparator());
         Book[] change = new Book[1];
         change[0] = books[0];
         books[0] = books[3];
@@ -25,8 +25,8 @@ public class Library {
             System.out.println(bookName.getName() + " имеет всего " + bookName.getPages() + " страниц.");
         }
         for (int i = 0; i < books.length; i++) {
-            if (books[i].getName().equals("Clean Code")) {
-                System.out.println("\n" + books[i].getName() + " имеет всего " + books[i].getPages() + " страниц.");
+            if ("Clean Code".equals(books[i].getName())) {
+                System.out.println(System.lineSeparator() + books[i].getName() + " имеет всего " + books[i].getPages() + " страниц.");
             }
         }
     }
