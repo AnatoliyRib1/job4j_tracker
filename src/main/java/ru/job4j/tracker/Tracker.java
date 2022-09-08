@@ -23,17 +23,17 @@ public class Tracker {
     }
 
     public Item[] findByName(String key) {
-        Item[] newItem = new Item[items.length];
+        Item[] result = new Item[size];
         int num = 0;
         for (int index = 0; index < size; index++) {
             Item item = items[index];
             if (item.getName().equals(key)) {
-                newItem[index] = item;
+                result[num] = item;
                 num++;
             }
         }
-        newItem = Arrays.copyOf(newItem, num);
-        return newItem;
+        result = Arrays.copyOf(result, num);
+        return result;
     }
 
     public boolean replace(int id, Item item) {
