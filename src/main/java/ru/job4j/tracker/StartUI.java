@@ -66,7 +66,6 @@ public class StartUI {
                 }
             } else if (select == 6) {
                     run = false;
-
             }
         }
     }
@@ -81,7 +80,6 @@ public class StartUI {
         for (int i = 0; i < menu.length; i++) {
             System.out.println(i + ". " + menu[i]);
         }
-
     }
 
     public static void main(String[] args) {
