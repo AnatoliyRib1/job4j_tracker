@@ -3,6 +3,7 @@ package ru.job4j.early;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertThrows;
 
 class PasswordValidatorTest {
 
@@ -15,44 +16,71 @@ class PasswordValidatorTest {
 
     @Test
     void whenInValidPasswordSpecialChar() {
-        String result = PasswordValidator.validate("SOMEWfewfew32");
-        String expected = "Должен быть как минимум один символ(не буква и не цифра)";
-        assertThat(expected).isEqualTo(result);
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> {
+                    PasswordValidator.validate("SOMEWfewfew32");
+                });
+        assertThat(exception.getMessage()).isEqualTo("Должен быть как минимум один символ(не буква и не цифра)");
     }
 
     @Test
     void whenInValidPasswordLength() {
-        String result = PasswordValidator.validate("rrr");
-        String expected = "Некорректная длина пароля";
-        assertThat(expected).isEqualTo(result);
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> {
+                    PasswordValidator.validate("rrr");
+                });
+        assertThat(exception.getMessage()).isEqualTo("Некорректная длина пароля");
     }
 
     @Test
     void whenInValidPasswordQwerty() {
-        String result = PasswordValidator.validate("123Qwerty&&&");
-        String expected = "Нельзя использовать стандартные пароли";
-        assertThat(expected).isEqualTo(result);
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> {
+                    PasswordValidator.validate("123Qwerty&&&");
+                });
+        assertThat(exception.getMessage()).isEqualTo("Нельзя использовать стандартные пароли");
     }
 
     @Test
     void whenInValidPasswordLower() {
-        String result = PasswordValidator.validate("PEWDD&^^*^%8765");
-        String expected = "Должна быть как минимум одна прописная буква";
-        assertThat(expected).isEqualTo(result);
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> {
+                    PasswordValidator.validate("PEWDD&^^*^%8765");
+                });
+        assertThat(exception.getMessage()).isEqualTo("Должна быть как минимум одна прописная буква");
     }
 
     @Test
     void whenInValidPasswordUpper() {
-        String result = PasswordValidator.validate("adagf&^^*^%8765");
-        String expected = "Должна быть как минимум одна заглавная буква";
-        assertThat(expected).isEqualTo(result);
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> {
+                    PasswordValidator.validate("adagf&^^*^%8765");
+                });
+        assertThat(exception.getMessage()).isEqualTo("Должна быть как минимум одна заглавная буква");
     }
 
     @Test
     void whenInValidPasswordDigit() {
-        String result = PasswordValidator.validate("adagf&^^*^%PPPP");
-        String expected = "Должна быть как минимум одна цифра";
-        assertThat(expected).isEqualTo(result);
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> {
+                    PasswordValidator.validate("adagf&^^*^%PPPP");
+                });
+        assertThat(exception.getMessage()).isEqualTo("Должна быть как минимум одна цифра");
     }
 
+    @Test
+    void whenInValidPasswordNull() {
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> {
+                    PasswordValidator.validate(null);
+                });
+        assertThat(exception.getMessage()).isEqualTo("Введите пароль");
+    }
 }
